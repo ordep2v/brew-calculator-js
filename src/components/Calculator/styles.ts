@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import media from 'styled-media-query'
 
 export const Wrapper = styled.div`
   margin-top: 2rem;
@@ -97,4 +98,6 @@ export const SelectOperation = styled.select`
   background-color: #1d1d30;
   font-size: 1.8rem;
   width: 15rem;
+  ${media.lessThan('large')`
+  margin-left: 0;`}
 `

@@ -1,31 +1,29 @@
 import styled from 'styled-components'
 
 export const Wrapper = styled.footer`
-padding-top: 5rem;
-/* height: 18rem; */
+ clip-path: polygon(0 0, 100% 20%, 100% 100%, 0 100%);
+padding-top: -20rem;
   font-size: 1.4rem;
-  color: #fcfcfc;
-  background-color: #1d1d30;
+  color: #1d1d30;
+  background-color: #fcfcfc;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  -webkit-box-shadow: 9px 7px 5px rgba(50, 50, 50, 0.77);
-		-moz-box-shadow:    9px 7px 5px rgba(50, 50, 50, 0.77);
-		box-shadow:         9px 7px 5px rgba(50, 50, 50, 0.77);
+  
 `
 
 export const Content = styled.div`
-
-  margin-top: 1.2rem;
+  
+  margin-top: 5rem;
   width: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-around;
 `
 export const Column = styled.div`
   a {
-    color: #fcfcfc;
+    color: #1d1d30;
     text-decoration: none;
   }
 `

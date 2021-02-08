@@ -1,6 +1,7 @@
 import Logo from 'components/Logo'
 import * as S from './styles'
 
+
 const Heading = () => (
   <S.Wrapper>
     <S.LogoWrapper>
