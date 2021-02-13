@@ -1,8 +1,8 @@
 import styled from 'styled-components'
+import media from 'styled-media-query'
 
 export const Wrapper = styled.footer`
- clip-path: polygon(0 0, 100% 20%, 100% 100%, 0 100%);
-padding-top: -20rem;
+ clip-path: polygon(0 0, 100% 20%, 100% 150%, 0 150%);
   font-size: 1.4rem;
   color: #1d1d30;
   background-color: #fcfcfc;
@@ -10,6 +10,9 @@ padding-top: -20rem;
   display: flex;
   flex-direction: column;
   align-items: center;
+  ${media.greaterThan('large')`
+    padding-top: -20rem;
+  `}
   
 `
 

@@ -19,7 +19,7 @@ export const Wrapper = styled.div`
 export const Displays = styled.div`
   width: 100%;
 
-  border-bottom-style: solid;
+  border-top-style: solid;
   border-width: 2px;
   border-color: #000;
 `
@@ -27,16 +27,19 @@ export const Display = styled.div`
   font-weight: bolder;
   font-size: 1.7rem;
   margin-top: 1rem;
+  width: 100%;
 `
 
 export const FormSite = styled.div`
   margin-top: 1.2rem;
+  width: 100%;
 `
 export const Form = styled.form`
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  width: 100%;
 `
 
 export const Label = styled.label`
@@ -58,7 +61,7 @@ export const Text = styled.h3`
   font-weight: bold;
   -webkit-text-stroke-width: 0.5px;
   -webkit-text-stroke-color: #000;
-  font-size: 2.2rem;
+  font-size: 2.4rem;
   margin-top: 1rem;
 `
 
@@ -96,8 +99,14 @@ export const SelectOperation = styled.select`
   font-weight: bold;
   color: #fcfcfc;
   background-color: #1d1d30;
-  font-size: 1.8rem;
-  width: 15rem;
+  font-size: 1.5rem;
+  width: 16rem;
   ${media.lessThan('large')`
   margin-left: 0;`}
+`
+export const CheckboxDivision = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 1.2rem;
 `

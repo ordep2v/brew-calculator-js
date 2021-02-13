@@ -9,9 +9,11 @@ const GlobalStyles = createGlobalStyle`
 
   html {
     font-size: 62.5%;
+    display: flex;
+    flex-direction: column;
   }
   section {
-    background-color: #1d1d30;
+  background: #1d1d30;
   }
 
   html, body, #__next {
