@@ -32,7 +32,6 @@ export const MaltCalculator = forwardRef(
         let list = numberInputs.inputs.concat([newInput])
         setNumberInputs({ inputs: list })
       }
-     
     }
     function inputRemove(e: React.MouseEvent<HTMLElement>): void {
       e.preventDefault()
@@ -41,17 +40,16 @@ export const MaltCalculator = forwardRef(
         list.splice(1, 1)
         setNumberInputs({ inputs: list })
       }
-  
     }
     function maltShare(display: number): void {
       if (display) {
         var totalMalt = display
         var totalPercent =
-          inputContent.input1 +
-          inputContent.input2 +
-          inputContent.input3 +
-          inputContent.input4 +
-          inputContent.input5
+          parseFloat(inputContent.input1.toString()) +
+          parseFloat(inputContent.input2.toString()) +
+          parseFloat(inputContent.input3.toString()) +
+          parseFloat(inputContent.input4.toString()) +
+          parseFloat(inputContent.input5.toString())
         if (totalPercent <= 100) {
           var firstPercent = (inputContent.input1 / 100) * totalMalt
           var firstPercent = (inputContent.input1 / 100) * totalMalt
@@ -68,7 +66,6 @@ export const MaltCalculator = forwardRef(
           })
         } else {
           setErrorText('Sum of (%) must be <= 100%')
-   
         }
       } else {
         setErrorText('Original Density must be > 1')
@@ -225,7 +222,7 @@ export const MaltCalculator = forwardRef(
                   )}
                   {props.display != 0 && (
                     <>
-                      <button onClick={thisHandleReset}>RST</button>
+                      <S.ResetButton onClick={thisHandleReset}>RST</S.ResetButton>
                     </>
                   )}
                 </S.InputButtons>
@@ -356,7 +353,7 @@ export const MaltCalculator = forwardRef(
                   )}
                   {props.display != 0 && (
                     <>
-                      <button onClick={thisHandleReset}>RST</button>
+                       <S.ResetButton onClick={thisHandleReset}>RESET</S.ResetButton>
                     </>
                   )}
                 </S.InputButtons>

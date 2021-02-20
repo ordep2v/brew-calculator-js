@@ -55,7 +55,7 @@ export const Input = styled.input`
   border-radius: 5px;
   height: 3.5rem;
   margin-top: 0.2rem;
-  padding: 0 0rem 0 .5rem;
+  padding: 0 0rem 0 0.5rem;
   font-weight: bold;
 `
 export const InputMalt = styled.input`
@@ -64,7 +64,7 @@ export const InputMalt = styled.input`
   width: 10rem;
   text-decoration: none;
   border-radius: 5px;
-  padding: 0 0rem 0 .5rem;
+  padding: 0 0rem 0 0.5rem;
   height: 3rem;
   margin-top: 1rem;
   font-weight: bold;
@@ -90,11 +90,22 @@ export const Button = styled.button`
 `
 
 export const InputButtons = styled.div`
-  margin-right: 6rem;
+  margin-right: 8rem;
   width: 80%;
-  margin-top: .5rem;
+  margin-top: 0.5rem;
   display: flex;
   justify-content: end;
+  flex-wrap: nowrap;
+`
+export const ResetButton = styled.button`
+  width: 4rem;
+  height: 4rem;
+  color: #fcfcfc;
+  background-color: #7a1515;
+  border-radius: 5rem;
+  outline-style: none;
+  border-color: black;
+  margin-top: .5rem;
 `
 
 export const InputButtonAdd = styled.button`
@@ -111,6 +122,8 @@ export const InputButtonAdd = styled.button`
   font-weight: bold;
   border-color: black;
   outline-style: none;
+  -webkit-text-stroke-width: 1.5px;
+  -webkit-text-stroke-color: #000;
   &:active {
     text-shadow: 0 0 3.5px black, 0 0 0 black;
   }
@@ -125,10 +138,12 @@ export const InputButtonRemove = styled.button`
   font-size: 5rem;
   font-weight: bold;
   width: 4rem;
-  height: 4rem;
+  height: 3.3rem;
   border-color: black;
   color: red;
   outline-style: none;
+  -webkit-text-stroke-width: 1.5px;
+  -webkit-text-stroke-color: #000;
   &:active {
     text-shadow: 0 0 3.5px black, 0 0 0 black;
   }
