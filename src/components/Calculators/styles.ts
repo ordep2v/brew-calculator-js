@@ -55,6 +55,19 @@ export const Input = styled.input`
   border-radius: 5px;
   height: 3.5rem;
   margin-top: 0.2rem;
+  padding: 0 0rem 0 .5rem;
+  font-weight: bold;
+`
+export const InputMalt = styled.input`
+  border-color: #000;
+  border-width: 2px;
+  width: 10rem;
+  text-decoration: none;
+  border-radius: 5px;
+  padding: 0 0rem 0 .5rem;
+  height: 3rem;
+  margin-top: 1rem;
+  font-weight: bold;
 `
 
 export const Text = styled.h3`
@@ -75,6 +88,52 @@ export const Button = styled.button`
   border-radius: 5px;
   color: #fcfcfc;
 `
+
+export const InputButtons = styled.div`
+  margin-right: 6rem;
+  width: 80%;
+  margin-top: .5rem;
+  display: flex;
+  justify-content: end;
+`
+
+export const InputButtonAdd = styled.button`
+  color: green;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  border-radius: 2rem;
+  font-size: 5rem;
+  border-width: 0;
+  width: 4rem;
+  height: 4rem;
+  font-weight: bold;
+  border-color: black;
+  outline-style: none;
+  &:active {
+    text-shadow: 0 0 3.5px black, 0 0 0 black;
+  }
+`
+export const InputButtonRemove = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  border-radius: 2rem;
+  border-width: 0;
+  font-size: 5rem;
+  font-weight: bold;
+  width: 4rem;
+  height: 4rem;
+  border-color: black;
+  color: red;
+  outline-style: none;
+  &:active {
+    text-shadow: 0 0 3.5px black, 0 0 0 black;
+  }
+`
+
 export const SelectDivision = styled.div`
   margin-top: 3rem;
   width: 100%;
