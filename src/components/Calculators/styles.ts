@@ -66,7 +66,8 @@ export const InputMalt = styled.input`
   border-radius: 5px;
   padding: 0 0rem 0 0.5rem;
   height: 3rem;
-  margin-top: 1rem;
+  margin-top: .5rem;
+  margin-bottom: .25rem;
   font-weight: bold;
 `
 
@@ -90,11 +91,10 @@ export const Button = styled.button`
 `
 
 export const InputButtons = styled.div`
-  margin-right: 8rem;
-  width: 80%;
-  margin-top: 0.5rem;
+  width: 100%;
+  margin-top: .5rem;
   display: flex;
-  justify-content: end;
+  justify-content: center;
   flex-wrap: nowrap;
 `
 export const ResetButton = styled.button`
@@ -106,6 +106,7 @@ export const ResetButton = styled.button`
   outline-style: none;
   border-color: black;
   margin-top: .5rem;
+  margin-left: 11rem;
 `
 
 export const InputButtonAdd = styled.button`
@@ -122,6 +123,7 @@ export const InputButtonAdd = styled.button`
   font-weight: bold;
   border-color: black;
   outline-style: none;
+  margin-left: 11rem;
   -webkit-text-stroke-width: 1.5px;
   -webkit-text-stroke-color: #000;
   &:active {
@@ -142,6 +144,7 @@ export const InputButtonRemove = styled.button`
   border-color: black;
   color: red;
   outline-style: none;
+
   -webkit-text-stroke-width: 1.5px;
   -webkit-text-stroke-color: #000;
   &:active {

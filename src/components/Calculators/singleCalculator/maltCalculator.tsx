@@ -211,18 +211,19 @@ export const MaltCalculator = forwardRef(
                     </S.Label>
                   ))}
                 <S.InputButtons>
-                  {props.display === 0 && (
+                  {props.display != 0 ? (
+                    <>
+                      <S.ResetButton onClick={thisHandleReset}>
+                        RST
+                      </S.ResetButton>
+                    </>
+                  ) : (
                     <>
                       {' '}
                       <S.InputButtonAdd onClick={inputAdd}>+</S.InputButtonAdd>
                       <S.InputButtonRemove onClick={inputRemove}>
                         -
                       </S.InputButtonRemove>
-                    </>
-                  )}
-                  {props.display != 0 && (
-                    <>
-                      <S.ResetButton onClick={thisHandleReset}>RST</S.ResetButton>
                     </>
                   )}
                 </S.InputButtons>
@@ -342,18 +343,18 @@ export const MaltCalculator = forwardRef(
                     </S.Label>
                   ))}
                 <S.InputButtons>
-                  {props.display === 0 && (
+                {props.display != 0 ? (
+                 
+                      <S.ResetButton onClick={thisHandleReset}>
+                        RESET
+                      </S.ResetButton>
+                   
+                  ) : (
                     <>
-                      {' '}
                       <S.InputButtonAdd onClick={inputAdd}>+</S.InputButtonAdd>
                       <S.InputButtonRemove onClick={inputRemove}>
                         -
                       </S.InputButtonRemove>
-                    </>
-                  )}
-                  {props.display != 0 && (
-                    <>
-                       <S.ResetButton onClick={thisHandleReset}>RESET</S.ResetButton>
                     </>
                   )}
                 </S.InputButtons>
