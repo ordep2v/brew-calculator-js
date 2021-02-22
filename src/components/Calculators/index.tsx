@@ -1,19 +1,25 @@
-import React, { MouseEventHandler, useRef, useState } from 'react'
-import { densityCorrection } from './tableAlcoolCorrection'
+import React, { useRef, useState } from 'react'
 import * as S from './styles'
-import IbuCalculator from './singleCalculator/ibuCalculator'
-import AbvCalculator from './singleCalculator/abvCalculator'
-import YprCalculator from './singleCalculator/yprCalculator'
+import { IbuCalculator } from './singleCalculator/ibuCalculator'
+import { AbvCalculator } from './singleCalculator/abvCalculator'
+import { YprCalculator } from './singleCalculator/yprCalculator'
 import { MaltCalculator } from './singleCalculator/maltCalculator'
 
 interface RefObject {
+  mathIbu: () => void
   maltQuantity: () => void
+  mathAlcoholContent: () => void
+  mathWeightYeastPitchRate: () => void
+  mathYeastPitchRate: () => void
 }
 
 export type CalculatorProps = {
   values?: CalculatorProps
   setDisplay?: React.Dispatch<React.SetStateAction<number>>
+  setDisplay2?: React.Dispatch<React.SetStateAction<number>>
+  setValues?: React.Dispatch<React.SetStateAction<any>>
   display?: number
+  display2?: number
   option?: string
   option2?: string
   operation?: string
@@ -26,12 +32,12 @@ export type CalculatorProps = {
   handleSubmit?: any
 }
 
-const Calculator = ({ ...props }) => {
+const Calculator = () => {
   const myRef = useRef<RefObject>(null)
 
   const [display, setDisplay] = useState<number>(0)
   const [display2, setDisplay2] = useState<number>(0)
-  const [values, setValues] = useState<CalculatorProps>({
+  const [values, setValues] = useState<any>({
     option: '',
     option2: '',
     operation: 'ibu-calculator',
@@ -41,73 +47,6 @@ const Calculator = ({ ...props }) => {
     num4: 0
   })
 
-  const childRef = useRef()
-
-  // FÓRMULAS DAS CALCULADORAS //
-  function mathIbu() {
-    let result = 0
-    var util = values.num1
-    var hopWeight = values.num2
-    var alphaAcidUnit = values.num3 / 100
-    var beerVolume = values.num4
-    result = (util * hopWeight * alphaAcidUnit) / beerVolume
-    setDisplay(result)
-
-    console.log('resultado' + result)
-  }
-  function mathAlcoholContent(...props: any) {
-    let result = 0
-    var originalGravity = parseFloat(values.num1.toString())
-    var originalTemperature = densityCorrection(values.num2.toString()) / 1000
-    var finalGravity = parseFloat(values.num3.toString())
-    var finalTemperature = densityCorrection(values.num4.toString()) / 1000
-    let adjustedOg = 0
-    let adjustedFg = 0
-    if (values.num2 >= 20) {
-      adjustedOg = originalGravity + originalTemperature
-    } else {
-      adjustedOg = originalGravity - originalTemperature
-    }
-    if (values.num4 >= 20) {
-      adjustedFg = finalGravity + finalTemperature
-    } else {
-      adjustedFg = finalGravity - finalTemperature
-    }
-    result = 131.25 * (adjustedOg - adjustedFg)
-    console.log(adjustedOg)
-    console.log(adjustedFg)
-    setDisplay(result)
-  }
-
-  function mathYeastPitchRate() {
-    let result = 0
-    var option = values.option
-    var volume = parseFloat(values.num1.toString())
-    var wortGravity = parseFloat(values.num2.toString())
-    var targetPitchRate = 0
-    if (option === 'ale') {
-      targetPitchRate = 187500
-    } else if (option === 'lager') {
-      targetPitchRate = 375000
-    }
-
-    result = targetPitchRate * volume * (wortGravity - 1.0)
-    setDisplay(result)
-  }
-  function mathWeightYeastPitchRate() {
-    let result = 0
-    var cellsNumber = parseFloat(values.num3.toString())
-    var efficiency = parseFloat(values.num4.toString())
-    if (values.option2 === 'liquid') {
-      result = cellsNumber / (10000 * (efficiency / 100))
-    } else if (values.option2 === 'dry') {
-      result = cellsNumber / (19000 * (efficiency / 100))
-    }
-
-    setDisplay2(result)
-  }
-
-  // FIM DAS FÓRMULAS //
 
   function handleChange(
     e: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>
@@ -136,24 +75,8 @@ const Calculator = ({ ...props }) => {
     setDisplay2(0)
   }
 
-  function typeChangeYpr(e: React.ChangeEvent<HTMLSelectElement>) {
-    if (e.target.name === 'option') {
-      setValues({
-        ...values,
-        option: e.target.value
-      })
-    } else if (e.target.name === 'option2') {
-      setValues({
-        ...values,
-        option2: e.target.value
-      })
-    }
-    console.log(values.option)
-    console.log(values.option2)
-  }
-
   function handleReset() {
-     setValues({
+    setValues({
       ...values,
       num1: 0,
       num2: 0,
@@ -164,33 +87,36 @@ const Calculator = ({ ...props }) => {
     })
     setDisplay(0)
     setDisplay2(0)
-
   }
   function handleSubmit(e: any) {
     e.preventDefault()
     if (values.operation === 'ibu-calculator') {
-      mathIbu()
+      if (!!myRef.current) {
+        myRef.current.mathIbu()
+      }
     } else if (values.operation === 'abv-calculator') {
-      mathAlcoholContent()
+      if (myRef.current) {
+        console.log('oi')
+        myRef.current.mathAlcoholContent()
+      }
     } else if (values.operation === 'ypr-calculator') {
       if (
         values.num1 != 0 &&
         values.num2 != 0 &&
-        e.target.id === 'buttoncells'
+        e.target.id === 'buttoncells' &&
+        !!myRef.current
       ) {
-        console.log(e.target.id)
-        mathYeastPitchRate()
+        myRef.current.mathYeastPitchRate()
       } else if (
         values.num3 != 0 &&
         values.num4 != 0 &&
-        e.target.id === 'buttonyeast'
+        e.target.id === 'buttonyeast' &&
+        !!myRef.current
       ) {
-
-        mathWeightYeastPitchRate()
+        myRef.current.mathWeightYeastPitchRate()
       }
     } else if (values.operation === 'mq-calculator') {
       if (myRef.current) {
-  
         myRef.current.maltQuantity()
       }
     } else {
@@ -211,15 +137,27 @@ const Calculator = ({ ...props }) => {
 
       {values.operation === 'ibu-calculator' && (
         <IbuCalculator
+          num1={values.num1}
+          num2={values.num2}
+          num3={values.num3}
+          num4={values.num4}
+          ref={myRef}
           values={values}
           handleChange={handleChange}
           handleSubmit={handleSubmit}
           display={display}
+          setDisplay={setDisplay}
         />
       )}
 
       {values.operation === 'abv-calculator' && (
         <AbvCalculator
+          num1={values.num1}
+          num2={values.num2}
+          num3={values.num3}
+          num4={values.num4}
+          ref={myRef}
+          setDisplay={setDisplay}
           values={values}
           handleChange={handleChange}
           handleSubmit={handleSubmit}
@@ -229,12 +167,19 @@ const Calculator = ({ ...props }) => {
 
       {values.operation === 'ypr-calculator' && (
         <YprCalculator
+          num1={values.num1}
+          num2={values.num2}
+          num3={values.num3}
+          num4={values.num4}
+          ref={myRef}
           values={values}
+          setValues={setValues}
           handleChange={handleChange}
           handleSubmit={handleSubmit}
-          typeChangeYpr={typeChangeYpr}
+          setDisplay={setDisplay}
           display={display}
           display2={display2}
+          setDisplay2={setDisplay2}
         />
       )}
 
