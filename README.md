@@ -1,5 +1,5 @@
-## Brew Calculator for lazy peoples
-# Multi Calculator for brewers
+# Brew Calculator for lazy peoples
+## Multi Calculator for brewers
 
 - TypeScript
 - React.js
@@ -7,4 +7,4 @@
 - Styled Components
 
 
-## Deploy(Vercel): https://brew-calculator-js.vercel.app/
+- Deploy(Vercel): https://brew-calculator-js.vercel.app/
