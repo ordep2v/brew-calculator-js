@@ -7,4 +7,4 @@
 - Styled Components
 
 
-- Deploy(Vercel): https://brew-calculator-js.vercel.app/
+- Deploy(Vercel): https://brew-calculator-js-iota.vercel.app/
