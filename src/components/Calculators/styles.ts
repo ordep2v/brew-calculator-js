@@ -66,10 +66,11 @@ export const InputMalt = styled.input`
   border-radius: 5px;
   padding: 0 0rem 0 0.5rem;
   height: 3rem;
-  margin-top: .5rem;
-  margin-bottom: .25rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.25rem;
   font-weight: bold;
 `
+
 
 export const Text = styled.h3`
   font-weight: bold;
@@ -92,20 +93,20 @@ export const Button = styled.button`
 
 export const InputButtons = styled.div`
   width: 100%;
-  margin-top: .5rem;
+  margin-top: 0.5rem;
   display: flex;
   justify-content: center;
   flex-wrap: nowrap;
 `
 export const ResetButton = styled.button`
-  width: 4rem;
-  height: 4rem;
+  width: 5rem;
+  height: 3rem;
   color: #fcfcfc;
   background-color: #7a1515;
-  border-radius: 5rem;
+  border-radius: .5rem;
   outline-style: none;
   border-color: black;
-  margin-top: .5rem;
+  margin-top: 0.5rem;
   margin-left: 11rem;
 `
 
@@ -186,4 +187,62 @@ export const CheckboxDivision = styled.div`
   display: flex;
   justify-content: space-evenly;
   margin-bottom: 1.2rem;
+`
+
+export const InputHop = styled.input`
+
+  border-color: #000;
+  border-width: 2px;
+  border-radius: 5px;
+  padding: 0 0rem 0 0.5rem;
+  height: 3rem;
+  width: 4.2rem;
+  -moz-appearance: textfield;
+  /* margin-left: 0.5rem; */
+`
+export const Table = styled.table`
+max-width: 100%;
+display:flex;
+flex-direction: column;
+height: 23rem;
+`
+export const TableRow = styled.tr`
+display: flex;
+justify-content: space-evenly;
+height: 1.5rem;
+&#input-row {
+  height: 14%;
+}`
+export const TableData = styled.td`
+height: 100%;
+&.table-data-answer{
+  color: black;
+  font-weight: bold;
+  font-size: 1.6rem;
+}
+&.ibu-response {
+  border-style: solid;
+  border-width: 2px;
+  border-color: green;
+  border-radius: 2.5px;
+  background-color: #fcfcfc;
+  font-size: 1.6rem;
+  color: black;
+  font-weight: bold;
+}
+`
+export const TableHead = styled.th`
+width: 5.291rem;
+height: 100%;
+&.table-head-answer {
+  width: 3.5rem;
+  font-size: 1.3rem;
+}
+&.response-header {
+  width: 4.2rem;
+}
+&.blank-space {
+  width: 2rem;
+}
+
 `

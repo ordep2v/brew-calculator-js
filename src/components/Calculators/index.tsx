@@ -4,6 +4,7 @@ import { IbuCalculator } from './singleCalculator/ibuCalculator'
 import { AbvCalculator } from './singleCalculator/abvCalculator'
 import { YprCalculator } from './singleCalculator/yprCalculator'
 import { MaltCalculator } from './singleCalculator/maltCalculator'
+import { HopsBitternessCalculator } from './singleCalculator/hopsBitternessCalculator'
 
 interface RefObject {
   mathIbu: () => void
@@ -11,6 +12,7 @@ interface RefObject {
   mathAlcoholContent: () => void
   mathWeightYeastPitchRate: () => void
   mathYeastPitchRate: () => void
+  bitternessMath: () => void
 }
 
 export type CalculatorProps = {
@@ -46,7 +48,6 @@ const Calculator = () => {
     num3: 0,
     num4: 0
   })
-
 
   function handleChange(
     e: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>
@@ -116,22 +117,23 @@ const Calculator = () => {
         myRef.current.mathWeightYeastPitchRate()
       }
     } else if (values.operation === 'mq-calculator') {
-      if (myRef.current) {
-        myRef.current.maltQuantity()
-      }
+      myRef.current && myRef.current.maltQuantity()
+    } else if (values.operation === 'hb-calculator') {
+      myRef.current && myRef.current.bitternessMath()
     } else {
     }
   }
   return (
     <>
       <S.SelectDivision>
-        <S.SelectOperationText>Choose a calculator: </S.SelectOperationText>
+        <S.SelectOperationText>Choose one: </S.SelectOperationText>
 
         <S.SelectOperation name="operation" onChange={calculatorChoose}>
           <option value="ibu-calculator">IBU Calculator</option>
           <option value="abv-calculator">Alcohol By Volume</option>
           <option value="ypr-calculator">Yeast Pitch Rate</option>
           <option value="mq-calculator">Malt Quantity</option>
+          <option value="hb-calculator"> Hops {"&"} Bitterness</option>
         </S.SelectOperation>
       </S.SelectDivision>
 
@@ -195,6 +197,20 @@ const Calculator = () => {
           handleSubmit={handleSubmit}
           setDisplay={setDisplay}
           display={display}
+          handleReset={handleReset}
+        />
+      )}
+
+      {values.operation === 'hb-calculator' && (
+        <HopsBitternessCalculator
+          num1={values.num1}
+          num2={values.num2}
+          num3={values.num3}
+          num4={values.num4}
+          ref={myRef}
+          values={values}
+          handleChange={handleChange}
+          handleSubmit={handleSubmit}
           handleReset={handleReset}
         />
       )}

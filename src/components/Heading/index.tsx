@@ -13,6 +13,14 @@ const Heading = () => (
         <S.Underlined/>
       </div>
       <div>
+        <S.MenuLink href="#">Colors Palette</S.MenuLink>
+        <S.Underlined/>
+      </div>
+      <div>
+        <S.MenuLink href="#">Parameters List</S.MenuLink>
+        <S.Underlined/>
+      </div>
+      <div>
         <S.MenuLink href="#">Partners</S.MenuLink>
         <S.Underlined/>
       </div>
